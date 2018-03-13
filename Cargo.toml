@@ -1,6 +1,8 @@
 [package]
+authors = ["Brandon Edens <brandonedens@gmail.com>"]
 name = "cargo-size"
 version = "0.1.0"
-authors = ["Brandon Edens <brandonedens@gmail.com>"]
+[[bin]]
+name = "cargo-size"
 
 [dependencies]
