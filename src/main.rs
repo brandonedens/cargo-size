@@ -2,10 +2,7 @@
 use std::ffi::OsStr;
 use std::process::{Command, Stdio};
 
-fn main() {
-    let v: Vec<String> = std::env::args().collect();
-    let args: Vec<&OsStr> = v.iter().map(|x| OsStr::new(x)).collect();
-
+fn run_size_cmd(args: &[&OsStr]) {
     let child = Command::new("size")
         .args(args)
         .stdout(Stdio::piped())
@@ -19,4 +16,11 @@ fn main() {
 
     println!("size exited {:?} with stdout: {:?} stderr: {:?}",
              output.status.success(), output.stdout, output.stderr);
+}
+
+fn main() {
+    let v: Vec<String> = std::env::args().collect();
+    let args: Vec<&OsStr> = v.iter().map(|x| OsStr::new(x)).collect();
+
+    run_size_cmd(&args);
 }
